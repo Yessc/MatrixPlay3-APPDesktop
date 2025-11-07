@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.image.ImageView?>
+
+<AnchorPane fx:id="anchor" minHeight="600.0" minWidth="600.0" style="-fx-background-color: #1e1e1e;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.client.ConfigWaiting">
+   <Label text="Waiting for players..." font="$titleFont" textFill="#ffffff" layoutX="200" layoutY="20" />
+   <HBox spacing="50" alignment="CENTER" layoutY="250" layoutX="100">
+       <VBox spacing="10" padding="10" alignment="CENTER">
+            <ImageView fx:id="player1Image" fitHeight="100" fitWidth="100"/>
+            <Label text="Username" textFill="#ffffff"/>
+            <TextField fx:id="player1" style="fx-background-color: transparent;" fx-text-fill="#ffffff" promptText="Username"/>
+       </VBox>
+        <Label text="VS" textFill="#ffffff" style="-fx-font-size: 24px;"/>
+       <VBox spacing="10" padding="10" alignment="CENTER">
+            <ImageView fx:id="player2Image" fitHeight="100" fitWidth="100"/>
+            <Label text="..." textFill="#ffffff"/>
+            <TextField fx:id="player2" style="fx-background-color: transparent;" fx-text-fill="#ffffff" promptText="..."/>
+       </VBox>
+   </HBox>
+</AnchorPane>
