@@ -8,36 +8,44 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchor" minHeight="600.0" minWidth="600.0" style="-fx-background-color: #1e1e1e;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.client.ConfigController">
-   
+<AnchorPane fx:id="anchor" minHeight="600.0" minWidth="600.0" style="-fx-background-color: #EFE8FA;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.client.ConfigController">
 
-   <Label text="Matrix Play" font="System Bold 24" textFill="#ffffff" layoutX="20" layoutY="20"/>
+    <Label text="Matrix Play" textFill="#AE64F5" alignment="CENTER"
+       AnchorPane.topAnchor="80.0"
+       AnchorPane.leftAnchor="0.0"
+       AnchorPane.rightAnchor="0.0">
+        <font>
+            <Font size="30"/>
+        </font>
+    </Label>
+
+    <VBox spacing="40" alignment ="CENTER" AnchorPane.topAnchor="150.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+        <padding>
+            <Insets top="60" right="20" bottom="40" left="20"/>
+        </padding>
+
+        <HBox spacing="20" alignment="CENTER_LEFT">
+            <Label text="Name: " textFill="#ffffff" minWidth="80"/>
+            <TextField fx:id="name" prefWidth="300"
+                       style="-fx-border-color: #ffffff; -fx-background-color: transparent; -fx-text-fill: #ffffff;" />
+        </HBox>
 
 
-   <VBox spacing="15" padding="20" layoutX="50" layoutY="100">
-       
-       <HBox spacing="10" alignment="center-left">
-           <Label text="Name: " textFill="#ffffff" />
-           <TextField fx:id="name"
-                      style="fx-border-color: #ffffff; fx-background-color: transparent;"
-                      fx-text-fill="#ffffff" />
-       </HBox>
+        <HBox spacing="20" alignment="CENTER_LEFT">
+            <Label text="URL: " textFill="#ffffff" minWidth="80"/>
+            <TextField fx:id="url" prefWidth="300"
+                       style="-fx-border-color: #ffffff; -fx-background-color: transparent; -fx-text-fill: #ffffff;" />
+        </HBox>
 
-  
-       <HBox spacing="10" alignment="center-left">
-           <Label text="URL: " textFill="#ffffff" />
-           <TextField fx:id="url"
-                      style="fx-border-color: #ffffff; fx-background-color: transparent;"
-                      fx-text-fill="#ffffff" />
-       </HBox>
+        <HBox spacing="10" alignment="CENTER">
+           <Label fx:id="errorLabel" text="" textFill="#ff0000"/>
+        </HBox>
 
+        <HBox spacing="10" alignment="CENTER">
+            <Button text="Connect" onAction="#connectToServer"
+                    style="-fx-background-color: #1e1e1e; -fx-border-color: #ffffff; -fx-text-fill: #ffffff;" />
+        </HBox>
 
-       <HBox spacing="10" alignment="center-left">
-           <Label fx:id="errorLabel" text="" textFill="#ff0000" font="System 12"/>
-       </HBox>
+    </VBox>
 
-       <HBox spacing="10" alignment="center">
-           <Button text="Connect" onAction="#connectToServer" style="-fx-background-color: #1e1e1e; -fx-border-color: #ffffff; -fx-text-fill: #ffffff;"/>
-       </HBox>
-   </VBox>
 </AnchorPane>

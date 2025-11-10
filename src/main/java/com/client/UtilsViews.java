@@ -7,23 +7,32 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 public class UtilsViews {
 
     public static StackPane parentContainer = new StackPane();
     public static ArrayList<Object> controllers = new ArrayList<>();
+    public static String currentView;
 
-    // Add one view to the list
+    
     public static void addView(Class<?> cls, String name, String path) throws Exception {
-        
         boolean defaultView = false;
-        FXMLLoader loader = new FXMLLoader(cls.getResource(path));
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(cls.getResource(path));
+
+        if (loader.getLocation() == null) {
+            throw new RuntimeException("FXML file not found: " + path);
+        }
+
         Pane view = loader.load();
         ObservableList<Node> children = parentContainer.getChildren();
 
-        // First view is the default view
+      
         if (children.isEmpty()) {
             defaultView = true;
+            currentView = name;
         }
 
         view.setId(name);
@@ -34,19 +43,48 @@ public class UtilsViews {
         controllers.add(loader.getController());
     }
 
-   
-   // Show a view by its name
-    public static void showView(String name) {
+  
+    public static void showView(String name, Stage stage) {
         ObservableList<Node> children = parentContainer.getChildren();
 
         for (Node child : children) {
             if (child.getId().equals(name)) {
                 child.setVisible(true);
                 child.setManaged(true);
+                currentView = name;
+
+                switch (name) {
+                    case "Config":
+                        stage.setWidth(600);
+                        stage.setHeight(600);
+                        break;
+
+                    case "Waiting":
+                        stage.setWidth(600);
+                        stage.setHeight(600);
+                        break;
+                    case "OtraVista":
+                        stage.setWidth(1000);
+                        stage.setHeight(600);
+                        break;
+                }
+
             } else {
                 child.setVisible(false);
                 child.setManaged(false);
             }
         }
     }
+    
+    public static Object getController(String viewName) {
+        ObservableList<Node> children = parentContainer.getChildren();
+        for (int i = 0; i < children.size(); i++) {
+            Node child = children.get(i);
+            if (child.getId().equals(viewName)) {
+                return controllers.get(i);
+            }
+        }
+        return null;
+    }
+
 }

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/19" 
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.client.CountdownController"
+            prefWidth="600" prefHeight="600"
+            style="-fx-background-color: #1e1e1e;">
+
+    <Label fx:id="countdownLabel"
+           layoutX="0" layoutY="0"
+           prefWidth="600" prefHeight="600"
+           text="3"
+           textFill="white"
+           style="-fx-font-size: 120px; -fx-font-weight: bold;"
+           alignment="CENTER">
+        <font>
+            <Font size="120"/>
+        </font>
+    </Label>
+
+</AnchorPane>
