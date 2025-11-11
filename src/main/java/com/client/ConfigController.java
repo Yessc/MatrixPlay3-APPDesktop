@@ -1,7 +1,5 @@
 package com.client;
 
-import java.io.IOException;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -32,7 +30,7 @@ public class ConfigController {
         ConfigData.clear();
         config = ConfigData.load();
         name.setText(config.getPlayerName());
-        url.setText(config.getServerURL());
+        url.setText(config.getClientType());
     }
 
     public void setStage(Stage stage) {
@@ -51,7 +49,7 @@ public class ConfigController {
         }
 
         config.setPlayerName(nameUser);
-        config.setServerURL(urlServer);
+        config.setClientType(urlServer);
         config.save();
 
         ConfigWaiting waitingController = (ConfigWaiting) UtilsViews.getController("Waiting");//recordar eliminar cuando pruebe la conexion
