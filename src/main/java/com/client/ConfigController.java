@@ -43,6 +43,11 @@ public class ConfigController {
         String nameUser = name.getText();
         String urlServer = url.getText();
 
+        if(nameUser.length() > 8){
+            errorLabel.setText("The name must be less than 8 characters");
+            return;
+        }
+
         if (nameUser.isEmpty() || urlServer.isEmpty()) {
             errorLabel.setText("All fields are required");
             return;
@@ -51,14 +56,15 @@ public class ConfigController {
         config.setPlayerName(nameUser);
         config.setClientType(urlServer);
         config.save();
-
+        System.out.println("Nos vamos al waiting");
         ConfigWaiting waitingController = (ConfigWaiting) UtilsViews.getController("Waiting");//recordar eliminar cuando pruebe la conexion
         waitingController.setPlayerNames(nameUser, "Player 2");
+        
         UtilsViews.showView("Waiting", stage);
         
         /*ConfigWaiting waitingController = (ConfigWaiting) UtilsViews.getController("Waiting");
 
-       waitingController.setStage(stage);
+        waitingController.setStage(stage);
         waitingController.startClient(urlServer, nameUser);
         UtilsViews.showView("Waiting", stage);*/
         

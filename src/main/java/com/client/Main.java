@@ -24,7 +24,7 @@ public class Main extends Application {
         
         
 
-        UtilsViews.showView("Countdown", primaryStage);
+        UtilsViews.showView("Config", primaryStage);
         
         primaryStage.show();
 

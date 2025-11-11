@@ -13,6 +13,10 @@ public class Play {
     private String player1Name;
     private String player2Name;
 
+    @FXML
+    public void initialize() {
+        drawGame();
+    }
     public void setPlayerNames(String player1Name, String player2Name) {
         this.player1Name = player1Name;
         this.player2Name = player2Name;
@@ -49,5 +53,7 @@ public class Play {
         gc.fillText("0", 200, 100);
         gc.setFill(Color.web("#00FF00"));
         gc.fillText("0", 800, 100);
+
+        //gc.drawLine(50,0, 50, 0);
     }
 }

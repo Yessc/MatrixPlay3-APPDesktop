@@ -35,12 +35,13 @@ public class ClientConnection extends WebSocketClient {
         // Enviar logClient al servidor
         JSONObject log = new JSONObject();
         JSONObject inner = new JSONObject();
-        inner.put("name", player1Name);
-        inner.put("type", "Desktop");
-        inner.put("avatar", "avatar1.png");
+        inner.put("type","register");
+        inner.put("clientName", player1Name);
+        inner.put("clientType", "Desktop");
+        //inner.put("avatar", "avatar1.png");
         log.put("logClient", inner);
 
-        send(log.toString());
+        send(inner.toString());
     }
 
     @Override
@@ -55,11 +56,11 @@ public class ClientConnection extends WebSocketClient {
                     listener.onCountdown(seconds);
                 }
 
-                if (obj.has("clients")) {
-                    JSONArray clients = obj.getJSONArray("clients");
+                if (obj.has("clientsList")) {
+                    JSONArray clients = obj.getJSONArray("clientsList");
                     for (int i = 0; i < clients.length(); i++) {
                         JSONObject client = clients.getJSONObject(i);
-                        String name = client.getString("name");
+                        String name = client.getString("clientName");
                         if (!name.equals(player1Name)) {
                             listener.onPlayer2Received(name);
                         }

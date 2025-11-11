@@ -33,10 +33,12 @@ public class ConfigWaiting {
     
     public void startClient(String url, String playerName) {
         this.player1 = playerName;
+        
         if (player1Name != null)
             player1Name.setText(playerName);
 
         try {
+            System.out.println("entraste a waiting");
             client = new ClientConnection(url, playerName, new ClientConnection.Listener() {
                 @Override
                 public void onConnected() {
@@ -96,7 +98,7 @@ public class ConfigWaiting {
             UtilsViews.showView("Countdown", stage);
             CountdownController countdownController = (CountdownController) UtilsViews.getController("Countdown");
             countdownController.setStage(stage);
-            //countdownController.start(5, player1Name.getText(), player2Name.getText());
+            //countdownController.start(3, player1Name.getText(), player2Name.getText());
 
             countdownController.start(3, "Jugador 1", "Jugador 2");
         }

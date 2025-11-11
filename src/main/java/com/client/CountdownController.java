@@ -47,9 +47,10 @@ public class CountdownController {
                     }
                     if (current == 0) {
                         UtilsViews.showView("Play", stage);
-                        Play playController = (Play) UtilsViews.getController("Play");
+                        //Play playController = (Play) UtilsViews.getController("Play");
                     }
                 }));
+        System.out.println("Countdown started with " + seconds + " seconds.");
         timeline.setCycleCount(seconds + 1);
         timeline.play();
     }
