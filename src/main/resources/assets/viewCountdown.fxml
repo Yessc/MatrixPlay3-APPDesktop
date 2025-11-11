@@ -4,23 +4,22 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.effect.DropShadow?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/19" 
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.client.CountdownController"
-            prefWidth="600" prefHeight="600"
-            style="-fx-background-color: #1e1e1e;">
-
-    <Label fx:id="countdownLabel"
-           layoutX="0" layoutY="0"
-           prefWidth="600" prefHeight="600"
-           text="3"
-           textFill="white"
-           style="-fx-font-size: 120px; -fx-font-weight: bold;"
-           alignment="CENTER">
-        <font>
-            <Font size="120"/>
-        </font>
-    </Label>
-
+<AnchorPane fx:id="anchor" minHeight="600.0" minWidth="600.0" style="-fx-background-color: #EFE8FA;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.client.CountdownController">
+   
+    <VBox spacing="80" alignment="CENTER" prefWidth="600" prefHeight="600">
+        <Label text="Starting match in"
+               textFill="#AE64F5"
+               alignment="CENTER"
+               style="-fx-font-size: 50px; -fx-font-family: '0xProtoNerdFont'; -fx-effect: dropshadow(gaussian, #68756D, 2, 0, 2, 2);" />
+               
+        <Label fx:id="countdownLabel"
+               text="3"
+               textFill="#F5BC64"
+               alignment="CENTER"
+               style="-fx-font-size: 120px; -fx-font-family: '0xProtoNerdFont'; -fx-effect: dropshadow(gaussian, #68756D, 2, 0, 2, 2);"/>
+    </VBox>
 </AnchorPane>

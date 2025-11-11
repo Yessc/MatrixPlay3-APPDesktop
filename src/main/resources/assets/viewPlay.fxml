@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.Scene?>
+<?import javafx.stage.Stage?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.client.Play">
+    <Canvas fx:id="gameCanvas" width="1000" height="600" style="-fx-background-color: #EFE8FA;"/>
+</StackPane>

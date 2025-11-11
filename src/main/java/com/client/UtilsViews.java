@@ -54,19 +54,14 @@ public class UtilsViews {
                 currentView = name;
 
                 switch (name) {
-                    case "Config":
+                    case "Countdown", "Config", "Waiting" -> {
                         stage.setWidth(600);
                         stage.setHeight(600);
-                        break;
-
-                    case "Waiting":
-                        stage.setWidth(600);
-                        stage.setHeight(600);
-                        break;
-                    case "OtraVista":
+                    }
+                    case "Play" -> {
                         stage.setWidth(1000);
                         stage.setHeight(600);
-                        break;
+                    }
                 }
 
             } else {

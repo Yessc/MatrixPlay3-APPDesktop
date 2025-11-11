@@ -7,43 +7,67 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.effect.DropShadow?>
 
-<AnchorPane fx:id="anchor" minHeight="600.0" minWidth="600.0" style="-fx-background-color: #EFE8FA;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.client.ConfigController">
+<AnchorPane fx:id="anchor" minHeight="600.0" minWidth="600.0"
+            style="-fx-background-color: #EFE8FA;"
+            xmlns="http://javafx.com/javafx/19"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.client.ConfigController">
 
-    <Label text="Matrix Play" textFill="#AE64F5" alignment="CENTER"
-       AnchorPane.topAnchor="80.0"
-       AnchorPane.leftAnchor="0.0"
-       AnchorPane.rightAnchor="0.0">
+    <!-- Título principal -->
+    <Text text="Matrix Play" fill="#AE64F5" stroke="rgba(0,0,0,0.3)" strokeWidth="1.2"
+          layoutX="150" layoutY="100">
         <font>
-            <Font size="30"/>
+            <Font url="@fonts/0xProto/0xProtoNerdFont-Bold.ttf" size="44"/>
         </font>
-    </Label>
+        <effect>
+            <DropShadow color="#68756D" radius="2" offsetX="2" offsetY="2"/>
+        </effect>
+    </Text>
 
-    <VBox spacing="40" alignment ="CENTER" AnchorPane.topAnchor="150.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+    <!-- Contenedor principal de inputs -->
+    <VBox spacing="40" alignment="CENTER" AnchorPane.topAnchor="150.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
         <padding>
             <Insets top="60" right="20" bottom="40" left="20"/>
         </padding>
 
-        <HBox spacing="20" alignment="CENTER_LEFT">
-            <Label text="Name: " textFill="#ffffff" minWidth="80"/>
-            <TextField fx:id="name" prefWidth="300"
-                       style="-fx-border-color: #ffffff; -fx-background-color: transparent; -fx-text-fill: #ffffff;" />
+        <!-- Name input -->
+        <HBox spacing="24" alignment="CENTER_LEFT">
+            <Label text="Name: " textFill="#AE64F5" minWidth="90">
+                <font>
+                    <Font url="@fonts/0xProto/0xProtoNerdFont-Bold.ttf" size="18"/>
+                </font>
+            </Label>
+            <TextField fx:id="name" prefWidth="430" prefHeight="30"
+                       style="-fx-font-family: '0xProto Nerd Font Bold'; -fx-font-size: 16; -fx-border-color: #68756D; -fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-border-radius: 5;" />
         </HBox>
 
-
-        <HBox spacing="20" alignment="CENTER_LEFT">
-            <Label text="URL: " textFill="#ffffff" minWidth="80"/>
-            <TextField fx:id="url" prefWidth="300"
-                       style="-fx-border-color: #ffffff; -fx-background-color: transparent; -fx-text-fill: #ffffff;" />
+        <!-- URL input -->
+        <HBox spacing="24" alignment="CENTER_LEFT">
+            <Label text="URL: " textFill="#AE64F5" minWidth="90">
+                <font>
+                    <Font url="@fonts/0xProto/0xProtoNerdFont-Bold.ttf" size="18"/>
+                </font>
+            </Label>
+            <TextField fx:id="url" text="u" prefWidth="430" prefHeight="30"
+                       style="-fx-font-family: '0xProto Nerd Font Bold'; -fx-font-size: 16; -fx-border-color: #68756D; -fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-border-radius: 5;" />
         </HBox>
 
+        <!-- Error label -->
         <HBox spacing="10" alignment="CENTER">
-           <Label fx:id="errorLabel" text="" textFill="#ff0000"/>
+            <Label fx:id="errorLabel" text="" textFill="#ff0000">
+                <font>
+                    <Font url="@fonts/0xProto/0xProtoNerdFont-Bold.ttf" size="16"/>
+                </font>
+            </Label>
         </HBox>
 
+        <!-- Connect button -->
         <HBox spacing="10" alignment="CENTER">
             <Button text="Connect" onAction="#connectToServer"
-                    style="-fx-background-color: #1e1e1e; -fx-border-color: #ffffff; -fx-text-fill: #ffffff;" />
+                    style="-fx-font-family: '0xProto Nerd Font Bold'; -fx-font-size: 18; -fx-background-color: #8F76A6; -fx-border-color: #8F76A6; -fx-text-fill: #ffffff; -fx-border-radius: 5;" />
         </HBox>
 
     </VBox>

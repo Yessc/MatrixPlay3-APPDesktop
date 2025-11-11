@@ -1,9 +1,12 @@
+com/client/ConfigController.class
+com/client/TablePlay.class
+com/client/CountdownController.class
+com/client/ClientConnection$Listener.class
+com/client/ClientConnection.class
 com/client/Main.class
 com/client/ConfigWaiting.class
 com/client/ConfigData.class
-com/client/UtilsViews.class
-com/client/ConfigController.class
-com/client/ClientConnection$Listener.class
 com/server/Main.class
-com/client/ClientConnection.class
-com/client/CountdownController.class
+com/client/Play.class
+com/client/ConfigWaiting$1.class
+com/client/UtilsViews.class
