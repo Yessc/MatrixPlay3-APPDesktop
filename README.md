@@ -54,6 +54,4 @@ mvn clean compile
 |:--:|:--:|:--:|
 | [@Yessc](https://github.com/Yessc) | [@Alvarjur](https://github.com/Alvarjur) | [@alejandroenti](https://github.com/alejandroenti) |
 
-| [<img src="https://github.com/Yessc.png" width="80">](https://github.com/Yessc) | [<img src="https://github.com/Alvarjur.png" width="80">](https://github.com/Alvarjur) | [<img src="https://github.com/alejandroenti.png" width="80">](https://github.com/alejandroenti) |
-|:--:|:--:|:--:|
-| [@Yessc](https://github.com/Yessc) | [@Alvarjur](https://github.com/Alvarjur) | [@alejandroenti](https://github.com/alejandroenti) |
+
