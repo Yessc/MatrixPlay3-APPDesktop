@@ -1,6 +1,6 @@
 # 🕹️ MatrixPlay3-APPDesktop
 
-*Like the classic **Pong**, but in Kotlin.*
+*Like the classic **Pong**, but in **Java** using **JavaFX**.*
 
 ## 🎯 Main Features
 - Real-Time online multiplayer with WebSockets.
@@ -11,18 +11,34 @@
 - Java with JDK21.
 - Maven
 - JavaFX
+- WebSockets for real-time multiplayer communication.
 
-## 🚀 Execute proyect
-1. Clone GitHub repository in a Raspberry Pi or similar with am extern LED screen attached.
-```bash
-git clone https://github.com/alejandroenti/MatrixPlay3-Raspberri.git
-```
-2. Enter into the project folder.
-3. Build your solution with Maven:
+## 🚀 Execute proyect with Visual Studio Code
+
+Follow these steps to clone the project and run it on your local machine using **Visual Studio Code** and the integrated terminal.
+
+1. Open Visual studio code
+  - Launch **Visual Studio Code** from your desktop or start menu.
+2. Open the Integrated Terminal
+
+  - Open the terminal inside Visual Studio Code by pressing:
+  - `Ctrl + ` (backtick) on Windows/Linux.
+  - `Cmd + ` (backtick) on macOS.
+ 
+  - 
+3. Clone GitHub repository.
+  - In the terminal, type the following command to clone the project repository from GitHub:
+  ```bash
+    git clone https://github.com/Yessc/MatrixPlay3-APPDesktop.git
+   ```
+4. Enter into the project folder.
+   <img width="249" height="37" alt="image" src="https://github.com/user-attachments/assets/5f8a5f64-6ce0-4635-963f-e4ea9744506a" />
+
+5. Build your solution with Maven:
   ``` bash
 mvn clean compile
    ```
-4. Run the project:
+6. Run the project:
  ``` bash
 ./run.sh com.client.Main  --> Linuz/Mac
 .\run.ps1 com.client,Main --> Windows
