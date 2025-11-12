@@ -56,7 +56,7 @@
                 <Insets top="10" right="10" bottom="10" left="10"/>
             </padding>
             <ImageView fx:id="player2Image" fitHeight="100" fitWidth="100"/>
-            <Label fx:id="p" text="..." textFill="#62f597">
+            <Label fx:id="player2Name" text="..." textFill="#62f597">
                 <font>
                     <Font url="@fonts/0xProto/0xProtoNerdFont-Bold.ttf" size="18"/>
                 </font>

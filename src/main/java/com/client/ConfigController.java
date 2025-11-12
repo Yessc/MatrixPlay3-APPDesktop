@@ -57,16 +57,18 @@ public class ConfigController {
         config.setClientType(urlServer);
         config.save();
         System.out.println("Nos vamos al waiting");
-        ConfigWaiting waitingController = (ConfigWaiting) UtilsViews.getController("Waiting");//recordar eliminar cuando pruebe la conexion
+        
+        
+        /*ConfigWaiting waitingController = (ConfigWaiting) UtilsViews.getController("Waiting");//recordar eliminar cuando pruebe la conexion
         waitingController.setPlayerNames(nameUser, "Player 2");
         
-        UtilsViews.showView("Waiting", stage);
+        UtilsViews.showView("Waiting", stage);*/
         
-        /*ConfigWaiting waitingController = (ConfigWaiting) UtilsViews.getController("Waiting");
+        ConfigWaiting waitingController = (ConfigWaiting) UtilsViews.getController("Waiting");
 
         waitingController.setStage(stage);
         waitingController.startClient(urlServer, nameUser);
-        UtilsViews.showView("Waiting", stage);*/
+        UtilsViews.showView("Waiting", stage);
         
     }
 }

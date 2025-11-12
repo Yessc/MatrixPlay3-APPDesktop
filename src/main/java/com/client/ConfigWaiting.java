@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.application.Platform;
 
 
 public class ConfigWaiting {
@@ -20,7 +21,7 @@ public class ConfigWaiting {
     @FXML
     private Label player2Name;
 
-    private String player1; 
+    private String player1;
     private String player2;
     private Stage stage;
 
@@ -56,6 +57,7 @@ public class ConfigWaiting {
 
                 @Override
                 public void onPlayer2Received(String name) {
+                    System.out.println("Jugador 2 recibido: " + name);
                     setSecondPlayer(name);
                 }
             });
@@ -90,20 +92,45 @@ public class ConfigWaiting {
                 && player2Name != null && !player2Name.getText().isEmpty();
     }
     
-    private void checkPlayersReady() {
+    
+    public void checkPlayersReady() {
         if (areBothPlayersReady()) {
 
             System.out.println("¡Two players Ready!");
 
-            UtilsViews.showView("Countdown", stage);
-            CountdownController countdownController = (CountdownController) UtilsViews.getController("Countdown");
-            countdownController.setStage(stage);
-            //countdownController.start(3, player1Name.getText(), player2Name.getText());
+            // Crear un nuevo hilo para esperar un segundo
+            Thread waitThread = new Thread(() -> {
+                try {
+                    // Simula la espera de 1 segundo (1000 milisegundos)
+                    Thread.sleep(1500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
-            countdownController.start(3, "Jugador 1", "Jugador 2");
-        }
+                // Usar Platform.runLater() para actualizar la UI en el hilo de JavaFX
+                Platform.runLater(() -> {
+                    // Aquí se realiza la acción después de esperar 1 segundo
+                    System.out.println("Mostrando jugadores y cambiando de vista...");
+
+                    // Mostrar el nombre del jugador que se conectó (puedes personalizar este mensaje)
+                    System.out.println("Jugador 1: " + player1Name.getText());
+                    System.out.println("Jugador 2: " + player2Name.getText());
+
+                    // Cambiar de vista y comenzar la cuenta regresiva
+                    CountdownController countdownController = (CountdownController) UtilsViews.getController("Countdown");
+                    countdownController.setStage(stage);
+                    UtilsViews.showView("Countdown", stage);
+
+                    // Iniciar la cuenta regresiva
+                    countdownController.start(3, player1Name.getText(), player2Name.getText());
+                });
+            });
+
+        // Iniciar el hilo
+        waitThread.start();
     }
-    
+}
+
     
     
     public void setStage(Stage stage) {

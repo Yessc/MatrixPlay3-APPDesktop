@@ -14,7 +14,7 @@ import javafx.util.Duration;
 
 public class CountdownController {
 
-    private CountdownController instance;
+    //private CountdownController instance;
 
     private Stage stage;
 
@@ -27,9 +27,9 @@ public class CountdownController {
 
     }
 
-    public CountdownController() {
+    /*public CountdownController() {
         this.instance = this;
-    }
+    }*/
 
     public void start( int seconds, String playerName, String player2Name) {
         this.nameUser = playerName; 
@@ -51,7 +51,7 @@ public class CountdownController {
                     }
                 }));
         System.out.println("Countdown started with " + seconds + " seconds.");
-        timeline.setCycleCount(seconds + 1);
+        timeline.setCycleCount(seconds);
         timeline.play();
     }
     
