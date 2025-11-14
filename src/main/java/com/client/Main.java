@@ -16,6 +16,7 @@ public class Main extends Application {
        UtilsViews.addView(Main.class, "Play", "/assets/viewPlay.fxml");
     
        ConfigController configController = (ConfigController) UtilsViews.getController("Config");
+    //    Play playController = (Play) UtilsViews.getController("Play");
        configController.setStage(primaryStage);
    
        Scene scene = new Scene(UtilsViews.parentContainer);

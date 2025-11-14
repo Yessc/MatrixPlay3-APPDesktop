@@ -50,10 +50,14 @@ public class ClientConnection extends WebSocketClient {
             try {
                 JSONObject obj = new JSONObject(message);
 
-                
-                if (obj.has("countdown")) {
-                    int seconds = obj.getInt("countdown");
-                    listener.onCountdown(seconds);
+                System.out.println("Message received: " + message);
+                if (obj.getString("type").equals("countdown")) {
+                    
+                    int seconds = obj.getInt("value");
+                    System.out.println("Countdown received: " + seconds);
+                    // listener.onCountdown(seconds);
+                    CountdownController countdownController = (CountdownController) UtilsViews.getController("Countdown");
+                    countdownController.changeCountdownLabel(seconds);
                 }
 
                 if (obj.has("clientsList")) {
@@ -65,6 +69,29 @@ public class ClientConnection extends WebSocketClient {
                             listener.onPlayer2Received(name);
                         }
                     }
+                }
+
+                if (obj.getString("type").equals("initialPosition")) {
+                    System.out.println("Initial position received");
+                    // JSONObject position = obj.getJSONObject("initialPosition");
+
+                    double p1xRaw = Double.parseDouble(obj.getString("p1").split(" ")[0]);
+                    double p1yRaw = Double.parseDouble(obj.getString("p1").split(" ")[1]);
+                    double p2xRaw = Double.parseDouble(obj.getString("p2").split(" ")[0]);
+                    double p2yRaw = Double.parseDouble(obj.getString("p2").split(" ")[1]);
+
+                    double[] p1Pos = Play.denormalizePosition(p1xRaw, p1yRaw);
+                    double[] p2Pos = Play.denormalizePosition(p2xRaw, p2yRaw);
+                    Play playController = (Play) UtilsViews.getController("Play");
+                    playController.player1X = p1Pos[0];
+                    playController.player1Y = p1Pos[1];
+                    playController.player2X = p2Pos[0];
+                    playController.player2Y = p2Pos[1];
+                    System.out.println("Player 1 position: " + playController.player1X + ", " + playController.player1Y);
+                    System.out.println("Player 2 position: " + playController.player2X + ", " + playController.player2Y);
+                    playController.drawGame();
+                    
+                    // Update player positions
                 }
 
             } catch (Exception e) {
