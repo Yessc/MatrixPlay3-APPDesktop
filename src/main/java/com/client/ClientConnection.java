@@ -42,6 +42,17 @@ public class ClientConnection extends WebSocketClient {
         log.put("logClient", inner);
 
         send(inner.toString());
+
+        Main.clientConnection = this;
+    }
+
+    public void sendMessage(String type, String message) {
+        JSONObject inner = new JSONObject();
+        inner.put("type", type);
+        inner.put("message", message);
+        inner.put("clientName", player1Name);
+
+        send(inner.toString());
     }
 
     @Override
