@@ -34,11 +34,12 @@ public class Main extends Application {
             case UP:
                 clientConnection.sendMessage("movement", "up");;
                 
-            break;
+                break;
+                
             case DOWN:
                 clientConnection.sendMessage("movement", "down");
 
-            break;
+                break;
 
             
             default:

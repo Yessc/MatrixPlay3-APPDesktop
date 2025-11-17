@@ -121,6 +121,9 @@ public class ConfigWaiting {
                     countdownController.setStage(stage);
                     UtilsViews.showView("Countdown", stage);
 
+                    Play playController = (Play) UtilsViews.getController("Play");
+                    playController.setPlayerNames(player1Name.getText(), player2Name.getText());
+
                     // Iniciar la cuenta regresiva
                     // countdownController.start(3, player1Name.getText(), player2Name.getText());
                 });

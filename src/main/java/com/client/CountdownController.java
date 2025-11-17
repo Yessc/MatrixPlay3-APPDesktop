@@ -33,6 +33,8 @@ public class CountdownController {
 
     public void start( int seconds, String playerName, String player2Name) {
         this.nameUser = playerName; 
+        Play playController = (Play) UtilsViews.getController("Play");
+        playController.setPlayerNames(playerName, player2Name);
         // startCountdown(seconds);
     }
 

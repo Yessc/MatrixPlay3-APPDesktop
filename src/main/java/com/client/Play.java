@@ -12,8 +12,8 @@ public class Play {
     @FXML
     private Canvas gameCanvas;
 
-    private String player1Name;
-    private String player2Name;
+    public String player1Name;
+    public String player2Name;
     
     public double player1X = 10;;
     public double player1Y = 250;

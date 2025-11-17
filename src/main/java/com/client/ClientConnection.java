@@ -65,21 +65,40 @@ public class ClientConnection extends WebSocketClient {
                 if (obj.getString("type").equals("countdown")) {
                     
                     int seconds = obj.getInt("value");
+                    String player1 = obj.getString("player1Name");
+                    String player2 = obj.getString("player2Name");
                     System.out.println("Countdown received: " + seconds);
+                    Play playController = (Play) UtilsViews.getController("Play");
+                    playController.setPlayerNames(player1, player2);
                     // listener.onCountdown(seconds);
                     CountdownController countdownController = (CountdownController) UtilsViews.getController("Countdown");
                     countdownController.changeCountdownLabel(seconds);
                 }
 
                 if (obj.has("clientsList")) {
+                    String[] arrayNames = new String[2];
+
                     JSONArray clients = obj.getJSONArray("clientsList");
+                    ConfigWaiting configWaiting = (ConfigWaiting) UtilsViews.getController("Waiting");
                     for (int i = 0; i < clients.length(); i++) {
                         JSONObject client = clients.getJSONObject(i);
                         String name = client.getString("clientName");
-                        if (!name.equals(player1Name)) {
-                            listener.onPlayer2Received(name);
+                        // if (!name.equals(player1Name)) {
+                        //     listener.onPlayer2Received(name);
+                        // }
+                        
+                        if (i < 2) {
+                            arrayNames[i] = name;
                         }
+
                     }
+                    if (arrayNames[0] != null && arrayNames[1] != null){
+                        configWaiting.setPlayerNames(arrayNames[0], arrayNames[1]);
+                    }
+                    
+
+                    
+                    
                 }
 
                 if (obj.getString("type").equals("initialPosition")) {
@@ -100,6 +119,34 @@ public class ClientConnection extends WebSocketClient {
                     playController.player2Y = p2Pos[1];
                     System.out.println("Player 1 position: " + playController.player1X + ", " + playController.player1Y);
                     System.out.println("Player 2 position: " + playController.player2X + ", " + playController.player2Y);
+                    playController.drawGame();
+                    
+                    // Update player positions
+                }
+
+
+                if (obj.getString("type").equals("playerPosition")) {
+                    System.out.println("Player position received");
+                    // JSONObject position = obj.getJSONObject("initialPosition");
+
+                    double posxRaw = Double.parseDouble(obj.getString("position").split(" ")[0]);
+                    double posyRaw = Double.parseDouble(obj.getString("position").split(" ")[1]);
+                    String player = obj.getString("playerName");
+
+                    
+                    Play playController = (Play) UtilsViews.getController("Play");
+                    
+                    if (playController.player1Name.equals(player)) {
+                        // playController.player1X = Play.denormalizePosition(posxRaw, posyRaw)[0];
+                        playController.player1Y = Play.denormalizePosition(posxRaw, posyRaw)[1];
+                        System.out.println("Updating player 1 position");
+                    }
+                    else {
+                        // playController.player2X = Play.denormalizePosition(posxRaw, posyRaw)[0];
+                        playController.player2Y = Play.denormalizePosition(posxRaw, posyRaw)[1];
+                        System.out.println("Updating player 2 position");
+                    }
+                    
                     playController.drawGame();
                     
                     // Update player positions
