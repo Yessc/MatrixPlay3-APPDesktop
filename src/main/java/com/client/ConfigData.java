@@ -61,8 +61,8 @@ public class ConfigData {//acordarme de mirar
                 if (i < scores.size() - 1)
                     writer.write(",");
             }
-            writer.write("]\n");
-            writer.write("}");*/// lo guardamos para despues
+            writer.write("]\n");*/
+            writer.write("}");
         } catch (IOException e) {
             e.printStackTrace();
         }
