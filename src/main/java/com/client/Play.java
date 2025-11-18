@@ -21,9 +21,10 @@ public class Play {
     public double player2Y = 250;
     public double ballX = 490;;
     public double ballY = 290;
+    public double ballRadius = 5;
 
-    public double PLAYER_WIDTH = 20;
-    public double PLAYER_HEIGHT = 100;
+    public double player_width = 20;
+    public double player_height = 100;
 
     @FXML
     public void initialize() {
@@ -44,27 +45,27 @@ public class Play {
 
         // Barras de jugadores
         gc.setFill(Color.web("#FF5733"));
-        gc.fillRect(player1X, player1Y - PLAYER_HEIGHT/2, PLAYER_WIDTH, PLAYER_HEIGHT);
+        gc.fillRect(player1X, player1Y - player_height/2, player_width, player_height);
         gc.setFill(Color.web("#33FF57"));
-        gc.fillRect(player2X - PLAYER_WIDTH, player2Y - PLAYER_HEIGHT/2, PLAYER_WIDTH, PLAYER_HEIGHT);
+        gc.fillRect(player2X - player_width, player2Y - player_height/2, player_width, player_height);
 
         // Pelota
         gc.setFill(Color.web("#FF8C00"));
-        gc.fillOval(ballX, ballY, 20, 20);
+        gc.fillOval(ballX, ballY, ballRadius, ballRadius);
 
         // Nombres
         gc.setFill(Color.web("#FF0000"));
         gc.setFont(javafx.scene.text.Font.font(20));
-        gc.fillText(player1Name, 200, 50);
+        gc.fillText(player1Name, 160, 50);
 
         gc.setFill(Color.web("#00FF00"));
-        gc.fillText(player2Name, 800, 50);
+        gc.fillText(player2Name, res - 180, 50);
 
         // Puntuaciones
         gc.setFill(Color.web("#FF0000"));
-        gc.fillText("0", 200, 100);
+        gc.fillText("0", 160, 100);
         gc.setFill(Color.web("#00FF00"));
-        gc.fillText("0", 800, 100);
+        gc.fillText("0", res - 180, 100);
 
         //gc.drawLine(50,0, 50, 0);
     }
