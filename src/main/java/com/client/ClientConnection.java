@@ -105,6 +105,9 @@ public class ClientConnection extends WebSocketClient {
                     System.out.println("Initial position received");
                     // JSONObject position = obj.getJSONObject("initialPosition");
 
+                    double playerWidth = Double.parseDouble(obj.getString("playersSize").split(" ")[0]);
+                    double playerHeight = Double.parseDouble(obj.getString("playersSize").split(" ")[1]);
+
                     double p1xRaw = Double.parseDouble(obj.getString("p1").split(" ")[0]);
                     double p1yRaw = Double.parseDouble(obj.getString("p1").split(" ")[1]);
                     double p2xRaw = Double.parseDouble(obj.getString("p2").split(" ")[0]);
@@ -117,8 +120,20 @@ public class ClientConnection extends WebSocketClient {
                     playController.player1Y = p1Pos[1];
                     playController.player2X = p2Pos[0];
                     playController.player2Y = p2Pos[1];
+                    playController.player_width = playerWidth * Play.res;
+                    playController.player_height = playerHeight * Play.res;
                     System.out.println("Player 1 position: " + playController.player1X + ", " + playController.player1Y);
                     System.out.println("Player 2 position: " + playController.player2X + ", " + playController.player2Y);
+
+                    double ballxRaw = Double.parseDouble(obj.getString("ball").split(" ")[0]);
+                    double ballyRaw = Double.parseDouble(obj.getString("ball").split(" ")[1]);
+                    double[] ballPos = Play.denormalizePosition(ballxRaw, ballyRaw);
+
+                    double ballRadiusRaw = obj.getDouble("ballRadius");
+                    playController.ballRadius = ballRadiusRaw * Play.res;
+
+                    playController.ballX = ballPos[0] - playController.ballRadius / 2;
+                    playController.ballY = ballPos[1] - playController.ballRadius / 2;
                     playController.drawGame();
                     
                     // Update player positions
