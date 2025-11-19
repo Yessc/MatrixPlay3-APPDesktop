@@ -32,12 +32,30 @@ public class Main extends Application {
        scene.setOnKeyPressed((keyEvent) -> {
         switch (keyEvent.getCode()) {
             case UP:
-                clientConnection.sendMessage("movement", "up");;
+                clientConnection.sendMessage("movement", "UP");
                 
                 break;
                 
             case DOWN:
-                clientConnection.sendMessage("movement", "down");
+                clientConnection.sendMessage("movement", "DOWN");
+
+                break;
+
+            
+            default:
+                throw new AssertionError();
+        }
+       });
+
+       scene.setOnKeyReleased((keyEvent) -> {
+        switch (keyEvent.getCode()) {
+            case UP:
+                clientConnection.sendMessage("movement", "STOP");
+
+                break;
+                
+            case DOWN:
+                clientConnection.sendMessage("movement", "STOP");
 
                 break;
 
