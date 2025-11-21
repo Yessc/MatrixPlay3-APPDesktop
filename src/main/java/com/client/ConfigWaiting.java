@@ -1,10 +1,10 @@
 package com.client;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import javafx.application.Platform;
 
 
 public class ConfigWaiting {
@@ -121,8 +121,11 @@ public class ConfigWaiting {
                     countdownController.setStage(stage);
                     UtilsViews.showView("Countdown", stage);
 
+                    Play playController = (Play) UtilsViews.getController("Play");
+                    playController.setPlayerNames(player1Name.getText(), player2Name.getText());
+
                     // Iniciar la cuenta regresiva
-                    countdownController.start(3, player1Name.getText(), player2Name.getText());
+                    // countdownController.start(3, player1Name.getText(), player2Name.getText());
                 });
             });
 

@@ -33,7 +33,9 @@ public class CountdownController {
 
     public void start( int seconds, String playerName, String player2Name) {
         this.nameUser = playerName; 
-        startCountdown(seconds);
+        Play playController = (Play) UtilsViews.getController("Play");
+        playController.setPlayerNames(playerName, player2Name);
+        // startCountdown(seconds);
     }
 
     private void startCountdown(int seconds) {
@@ -53,6 +55,15 @@ public class CountdownController {
         System.out.println("Countdown started with " + seconds + " seconds.");
         timeline.setCycleCount(seconds);
         timeline.play();
+    }
+
+    public void changeCountdownLabel(int seconds) {
+        countdownLabel.setText(String.valueOf(seconds));
+
+        if (seconds == 0) {
+            UtilsViews.showView("Play", stage);
+            //Play playController = (Play) UtilsViews.getController("Play");
+        }
     }
     
     public void setStage(Stage stage) {

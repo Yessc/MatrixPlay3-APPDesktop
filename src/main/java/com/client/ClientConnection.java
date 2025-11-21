@@ -42,6 +42,17 @@ public class ClientConnection extends WebSocketClient {
         log.put("logClient", inner);
 
         send(inner.toString());
+
+        Main.clientConnection = this;
+    }
+
+    public void sendMessage(String type, String message) {
+        JSONObject inner = new JSONObject();
+        inner.put("type", type);
+        inner.put("message", message);
+        inner.put("clientName", player1Name);
+
+        send(inner.toString());
     }
 
     @Override
@@ -50,21 +61,95 @@ public class ClientConnection extends WebSocketClient {
             try {
                 JSONObject obj = new JSONObject(message);
 
-                
-                if (obj.has("countdown")) {
-                    int seconds = obj.getInt("countdown");
-                    listener.onCountdown(seconds);
+                System.out.println("Message received: " + message);
+                if (obj.getString("type").equals("countdown")) {
+                    
+                    int seconds = obj.getInt("value");
+                    String player1 = obj.getString("player1Name");
+                    String player2 = obj.getString("player2Name");
+                    System.out.println("Countdown received: " + seconds);
+                    Play playController = (Play) UtilsViews.getController("Play");
+                    playController.setPlayerNames(player1, player2);
+                    // listener.onCountdown(seconds);
+                    CountdownController countdownController = (CountdownController) UtilsViews.getController("Countdown");
+                    countdownController.changeCountdownLabel(seconds);
                 }
 
                 if (obj.has("clientsList")) {
+                    String[] arrayNames = new String[2];
+
                     JSONArray clients = obj.getJSONArray("clientsList");
+                    ConfigWaiting configWaiting = (ConfigWaiting) UtilsViews.getController("Waiting");
                     for (int i = 0; i < clients.length(); i++) {
                         JSONObject client = clients.getJSONObject(i);
                         String name = client.getString("clientName");
-                        if (!name.equals(player1Name)) {
-                            listener.onPlayer2Received(name);
+                        // if (!name.equals(player1Name)) {
+                        //     listener.onPlayer2Received(name);
+                        // }
+                        
+                        if (i < 2) {
+                            arrayNames[i] = name;
                         }
+
                     }
+                    if (arrayNames[0] != null && arrayNames[1] != null){
+                        configWaiting.setPlayerNames(arrayNames[0], arrayNames[1]);
+                    }
+                    
+
+                    
+                    
+                }
+
+                if (obj.getString("type").equals("initialPosition")) {
+                    System.out.println("Initial position received");
+                    // JSONObject position = obj.getJSONObject("initialPosition");
+
+                    double p1xRaw = Double.parseDouble(obj.getString("p1").split(" ")[0]);
+                    double p1yRaw = Double.parseDouble(obj.getString("p1").split(" ")[1]);
+                    double p2xRaw = Double.parseDouble(obj.getString("p2").split(" ")[0]);
+                    double p2yRaw = Double.parseDouble(obj.getString("p2").split(" ")[1]);
+
+                    double[] p1Pos = Play.denormalizePosition(p1xRaw, p1yRaw);
+                    double[] p2Pos = Play.denormalizePosition(p2xRaw, p2yRaw);
+                    Play playController = (Play) UtilsViews.getController("Play");
+                    playController.player1X = p1Pos[0];
+                    playController.player1Y = p1Pos[1];
+                    playController.player2X = p2Pos[0];
+                    playController.player2Y = p2Pos[1];
+                    System.out.println("Player 1 position: " + playController.player1X + ", " + playController.player1Y);
+                    System.out.println("Player 2 position: " + playController.player2X + ", " + playController.player2Y);
+                    playController.drawGame();
+                    
+                    // Update player positions
+                }
+
+
+                if (obj.getString("type").equals("playerPosition")) {
+                    System.out.println("Player position received");
+                    // JSONObject position = obj.getJSONObject("initialPosition");
+
+                    double posxRaw = Double.parseDouble(obj.getString("position").split(" ")[0]);
+                    double posyRaw = Double.parseDouble(obj.getString("position").split(" ")[1]);
+                    String player = obj.getString("playerName");
+
+                    
+                    Play playController = (Play) UtilsViews.getController("Play");
+                    
+                    if (playController.player1Name.equals(player)) {
+                        // playController.player1X = Play.denormalizePosition(posxRaw, posyRaw)[0];
+                        playController.player1Y = Play.denormalizePosition(posxRaw, posyRaw)[1];
+                        System.out.println("Updating player 1 position");
+                    }
+                    else {
+                        // playController.player2X = Play.denormalizePosition(posxRaw, posyRaw)[0];
+                        playController.player2Y = Play.denormalizePosition(posxRaw, posyRaw)[1];
+                        System.out.println("Updating player 2 position");
+                    }
+                    
+                    playController.drawGame();
+                    
+                    // Update player positions
                 }
 
             } catch (Exception e) {

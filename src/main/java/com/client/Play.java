@@ -7,11 +7,23 @@ import javafx.scene.paint.Color;
 
 public class Play {
 
+    public static final int res = 576;
+
     @FXML
     private Canvas gameCanvas;
 
-    private String player1Name;
-    private String player2Name;
+    public String player1Name;
+    public String player2Name;
+    
+    public double player1X = 10;;
+    public double player1Y = 250;
+    public double player2X = 970;;
+    public double player2Y = 250;
+    public double ballX = 490;;
+    public double ballY = 290;
+
+    public double PLAYER_WIDTH = 20;
+    public double PLAYER_HEIGHT = 100;
 
     @FXML
     public void initialize() {
@@ -32,13 +44,13 @@ public class Play {
 
         // Barras de jugadores
         gc.setFill(Color.web("#FF5733"));
-        gc.fillRect(10, 250, 20, 100);
+        gc.fillRect(player1X, player1Y - PLAYER_HEIGHT/2, PLAYER_WIDTH, PLAYER_HEIGHT);
         gc.setFill(Color.web("#33FF57"));
-        gc.fillRect(970, 250, 20, 100);
+        gc.fillRect(player2X - PLAYER_WIDTH, player2Y - PLAYER_HEIGHT/2, PLAYER_WIDTH, PLAYER_HEIGHT);
 
         // Pelota
         gc.setFill(Color.web("#FF8C00"));
-        gc.fillOval(490, 290, 20, 20);
+        gc.fillOval(ballX, ballY, 20, 20);
 
         // Nombres
         gc.setFill(Color.web("#FF0000"));
@@ -55,5 +67,11 @@ public class Play {
         gc.fillText("0", 800, 100);
 
         //gc.drawLine(50,0, 50, 0);
+    }
+
+    public static double[] denormalizePosition(double normX, double normY) {
+        double x = normX * res;
+        double y = normY * res;
+        return new double[]{x, y};
     }
 }

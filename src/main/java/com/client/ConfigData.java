@@ -54,7 +54,7 @@ public class ConfigData {//acordarme de mirar
         try (FileWriter writer = new FileWriter(FILE_NAME)) {
             writer.write("{\n");
             writer.write("  \"playerName\": \"" + escape(playerName) + "\",\n");
-            writer.write("  \"clientType\": \"" + escape(clientType) + "\",\n");
+            writer.write("  \"clientType\": \"" + escape(clientType) + "\"\n");
             /*writer.write("  \"scores\": [");
             for (int i = 0; i < scores.size(); i++) {
                 writer.write(String.valueOf(scores.get(i)));
