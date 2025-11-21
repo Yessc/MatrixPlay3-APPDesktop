@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.effect.DropShadow?>
+
+<AnchorPane fx:id="anchor" minHeight="600.0" minWidth="600.0"
+            style="-fx-background-color: #EFE8FA;"
+            xmlns="http://javafx.com/javafx/19"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.client.ConfigFinal">
+
+ 
+    <Text text="FINAL GAME" fill="#AE64F5" stroke="rgba(0,0,0,0.2)" strokeWidth="1"
+          layoutX="100" layoutY="100">
+        <font>
+            <Font url="@fonts/0xProto/0xProtoNerdFont-Bold.ttf" size="36"/>
+        </font>
+        <effect>
+            <DropShadow color="#68756D" radius="2" offsetX="2" offsetY="2"/>
+        </effect>
+    </Text>
+
+    <HBox spacing="50" alignment="CENTER" layoutY="250" layoutX="100">
+
+        <VBox spacing="10" alignment="CENTER">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <ImageView fx:id="winnerImage" fitHeight="100" fitWidth="100"/>
+            <Label fx:id="winner" text="" textFill="#C62532">
+                <font>
+                    <Font url="@fonts/0xProto/0xProtoNerdFont-Bold.ttf" size="18"/>
+                </font>
+            </Label>
+            <Label fx:id="winnerpoints" text="" textFill="#C62532">
+                <font>
+                    <Font url="@fonts/0xProto/0xProtoNerdFont-Bold.ttf" size="18"/>
+                </font>
+            </Label>
+
+
+        </VBox>
+
+        <!-- VS -->
+        <Text text="-" fill="#F5BC64" stroke="rgba(0,0,0,0.2)" strokeWidth="1">
+            <font>
+                <Font url="@fonts/0xProto/0xProtoNerdFont-Bold.ttf" size="30"/>
+            </font>
+            <effect>
+                <DropShadow color="#68756D" radius="2" offsetX="2" offsetY="2"/>
+            </effect>
+        </Text>
+
+        <!-- Jugador 2 -->
+        <VBox spacing="10" alignment="CENTER">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <ImageView fx:id="looserImage" fitHeight="100" fitWidth="100"/>
+            <Label fx:id="looser" text="" textFill="#62f597">
+                <font>
+                    <Font url="@fonts/0xProto/0xProtoNerdFont-Bold.ttf" size="18"/>
+                </font>
+            </Label>
+            <Label fx:id="looserpoints" text="" textFill="#62f597">
+                <font>
+                    <Font url="@fonts/0xProto/0xProtoNerdFont-Bold.ttf" size="18"/>
+                </font>
+            </Label>
+        </VBox>
+
+    </HBox>
+
+</AnchorPane>

@@ -11,6 +11,7 @@ public class ConfigData {
     private String playerName;
     private String clientType;
     private List<Integer> scores; // lista de puntuaciones futura
+    private int goalScored;
     private double posY;
 
 
@@ -21,6 +22,7 @@ public class ConfigData {
         this.clientType = "";
         this.scores = new ArrayList<>();
         this.posY = 0.0;
+        this.goalScored = 0;
     }
  
     public String getPlayerName() {
@@ -43,8 +45,16 @@ public class ConfigData {
         return scores;
     }
 
+
     public void setScores(List<Integer> scores) {
         this.scores = scores;
+    }
+
+    public int getGoalScored(int goalScored) {
+        return goalScored;
+    }
+    public void setGoalScored(int goalScored) {
+        this.goalScored = goalScored;
     }
 
 
@@ -53,17 +63,7 @@ public class ConfigData {
             writer.write("{\n");
             writer.write("  \"playerName\": \"" + escape(playerName) + "\",\n");
             writer.write("  \"clientType\": \"" + escape(clientType) + "\"\n");
-            /*writer.write("  \"scores\": [");
-            for (int i = 0; i < scores.size(); i++) {
-                writer.write(String.valueOf(scores.get(i)));
-                if (i < scores.size() - 1)
-                    writer.write(",");
-            }
-<<<<<<< HEAD
-            writer.write("]\n");*/
-=======
-            writer.write("]\n");*/// lo guardamos para despues
->>>>>>> pro
+            writer.write("  \"goalsScored\": \"" + goalScored + "\"\n");
             writer.write("}");
         } catch (IOException e) {
             e.printStackTrace();
