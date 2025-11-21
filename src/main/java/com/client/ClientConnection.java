@@ -167,6 +167,22 @@ public class ClientConnection extends WebSocketClient {
                     // Update player positions
                 }
 
+                if (obj.getString("type").equals("ballPosition")) {
+                    System.out.println("Ball position received");
+                    // JSONObject position = obj.getJSONObject("initialPosition");
+
+                    double posxRaw = Double.parseDouble(obj.getString("position").split(" ")[0]);
+                    double posyRaw = Double.parseDouble(obj.getString("position").split(" ")[1]);
+
+                    
+                    Play playController = (Play) UtilsViews.getController("Play");
+                    
+                    playController.ballX = Play.denormalizePosition(posxRaw, posyRaw)[0] - playController.ballRadius / 2;
+                    playController.ballY = Play.denormalizePosition(posxRaw, posyRaw)[1] - playController.ballRadius / 2;
+                    
+                    playController.drawGame();
+                }
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
