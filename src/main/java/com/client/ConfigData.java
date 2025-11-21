@@ -7,8 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConfigData {//acordarme de mirar
-
+public class ConfigData {
     private String playerName;
     private String clientType;
     private List<Integer> scores; // lista de puntuaciones futura
@@ -24,7 +23,6 @@ public class ConfigData {//acordarme de mirar
         this.posY = 0.0;
     }
  
-    // Getters y setters
     public String getPlayerName() {
         return playerName;
     }
@@ -61,7 +59,11 @@ public class ConfigData {//acordarme de mirar
                 if (i < scores.size() - 1)
                     writer.write(",");
             }
+<<<<<<< HEAD
             writer.write("]\n");*/
+=======
+            writer.write("]\n");*/// lo guardamos para despues
+>>>>>>> pro
             writer.write("}");
         } catch (IOException e) {
             e.printStackTrace();

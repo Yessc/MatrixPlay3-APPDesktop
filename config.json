@@ -1,4 +1,9 @@
 {
+<<<<<<< HEAD
   "playerName": "cccc",
   "clientType": "ws://localhost:3000"
+=======
+  "playerName": "Jessi",
+  "clientType": "wss://matrixplay3.ieti.site:443",
+>>>>>>> pro
 }
