@@ -23,11 +23,13 @@ public class ClientConnection extends WebSocketClient {
 
     private Listener listener;
     private String player1Name;
+    private int goalScored;
 
     public ClientConnection(String url, String playerName, Listener listener) throws Exception {
         super(new URI(url));
         this.listener = listener;
         this.player1Name = playerName;
+        this.goalScored = goalScored;
     }
 
     @Override
@@ -38,7 +40,7 @@ public class ClientConnection extends WebSocketClient {
         inner.put("type","register");
         inner.put("clientName", player1Name);
         inner.put("clientType", "Desktop");
-        //inner.put("avatar", "avatar1.png");
+
         log.put("logClient", inner);
 
         send(inner.toString());
@@ -51,6 +53,7 @@ public class ClientConnection extends WebSocketClient {
         inner.put("type", type);
         inner.put("message", message);
         inner.put("clientName", player1Name);
+        inner.put("goalScored", goalScored);
 
         send(inner.toString());
     }

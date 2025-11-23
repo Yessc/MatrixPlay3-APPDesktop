@@ -14,6 +14,7 @@ public class Main extends Application {
        UtilsViews.addView(Main.class, "Waiting", "/assets/viewWaiting.fxml");
        UtilsViews.addView(Main.class, "Countdown", "/assets/viewCountdown.fxml");
        UtilsViews.addView(Main.class, "Play", "/assets/viewPlay.fxml");
+       UtilsViews.addView(Main.class, "Final", "/assets/viewFinal.fxml");
     
        ConfigController configController = (ConfigController) UtilsViews.getController("Config");
     //    Play playController = (Play) UtilsViews.getController("Play");
