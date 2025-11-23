@@ -26,6 +26,8 @@ public class Play {
     public double player_width = 20;
     public double player_height = 100;
 
+    public int[] score = {0, 0};
+
     @FXML
     public void initialize() {
         drawGame();
@@ -63,9 +65,9 @@ public class Play {
 
         // Puntuaciones
         gc.setFill(Color.web("#FF0000"));
-        gc.fillText("0", 160, 100);
+        gc.fillText(Integer.toString(score[0]), 160, 100);
         gc.setFill(Color.web("#00FF00"));
-        gc.fillText("0", res - 180, 100);
+        gc.fillText(Integer.toString(score[1]), res - 180, 100);
 
         //gc.drawLine(50,0, 50, 0);
     }
@@ -74,5 +76,14 @@ public class Play {
         double x = normX * res;
         double y = normY * res;
         return new double[]{x, y};
+    }
+
+    public void updateScore(String pName) {
+        if (pName.equals(player1Name)) {
+            score[0] += 1;
+        }
+        else {
+            score[1] += 1;
+        }
     }
 }

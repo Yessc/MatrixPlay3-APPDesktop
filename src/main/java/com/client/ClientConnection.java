@@ -183,6 +183,12 @@ public class ClientConnection extends WebSocketClient {
                     playController.drawGame();
                 }
 
+                if (obj.getString("type").equals("goalScored")) {
+                    String name = obj.getString("playerName");
+                    Play playController = (Play) UtilsViews.getController("Play");
+                    playController.updateScore(name);
+                }
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
