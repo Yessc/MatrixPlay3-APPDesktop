@@ -13,6 +13,7 @@ public class Play {
     public static final int res = 576;
     public static final int MAX_GOALS = 5; //max de goles
     private Stage stage;
+    private ClientConnection client;
 
     @FXML
     private Canvas gameCanvas;
@@ -90,6 +91,7 @@ public class Play {
             score[1] += 1;
         }
         // drawGame(); //redibujar el juego despues de un gol
+        sendGoalToServer(pName);
         checkGameEnd();
     }
     
@@ -128,6 +130,14 @@ public class Play {
 
     }
     
+    private void sendGoalToServer(String playerName) {
+        if (client != null) {
+            int currentScore = (score[0] > score[1]) ? score[0] : score[1];
+            client.sendMessage("goalScored", playerName,"Desktop", currentScore);//revisar como le envio el mensaje al servidor
+        } else {
+            System.err.println("Error: Cliente no conectado");
+        }
+    }
     
     
 
