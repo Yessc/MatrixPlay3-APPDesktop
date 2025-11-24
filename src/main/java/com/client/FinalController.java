@@ -3,11 +3,11 @@ package com.client;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import javafx.scene.control.Button;
 
 public class FinalController {
     
@@ -68,7 +68,7 @@ public class FinalController {
 
     
     private void goBack() {
-        //Stage stage = (Stage) returnButton.getScene().getWindow();
+        Stage stage = (Stage) returnButton.getScene().getWindow();
         UtilsViews.showView("Config", stage);
     }
 
@@ -77,7 +77,7 @@ public class FinalController {
         this.stage = stage;
     }
     
-    /*public void updateFinalGame(String winnerName, String looserName, int winnerPoints, int looserPoints) {
+    public void updateFinalGame(String winnerName, String looserName, int winnerPoints, int looserPoints) {
     winner.setText(winnerName);
     looser.setText(looserName);
     winnerpoints.setText(String.valueOf(winnerPoints));
@@ -88,6 +88,6 @@ public class FinalController {
 
     winnerImage.setImage(new Image(winnerImagePath));
     looserImage.setImage(new Image(looserImagePath));
-}*/
+    }
     
 }

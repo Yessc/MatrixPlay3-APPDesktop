@@ -13,14 +13,14 @@
 <?import javafx.scene.layout.StackPane?>
 
 
-<AnchorPane fx:id="anchor" minHeight="600.0" minWidth="700.0" style="-fx-background-color: #EFE8FA;"
+<AnchorPane fx:id="anchor" minHeight="600.0" minWidth="600.0" style="-fx-background-color: #EFE8FA;"
     xmlns="http://javafx.com/javafx/19"
     xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.client.FinalController">
 
-    <VBox alignment="CENTER" layoutY="50" minWidth="900.0">
+    <VBox alignment="CENTER" layoutY="50" minWidth="600.0">
         <Text text="FINAL GAME" fill="#AE64F5" stroke="rgba(0,0,0,0.2)" strokeWidth="1" textAlignment="CENTER">
             <font>
-                <Font url="@fonts/0xProto/0xProtoNerdFont-Bold.ttf" size="80"/>
+                <Font url="@fonts/0xProto/0xProtoNerdFont-Bold.ttf" size="60"/>
             </font>
             <effect>
                 <DropShadow color="#68756D" radius="8" offsetX="5" offsetY="5" spread="0.5"/>
@@ -28,20 +28,20 @@
         </Text>
     </VBox>
 
-    <HBox spacing="60" alignment="CENTER" layoutY="180" layoutX="100" minWidth="700.0">
+    <HBox spacing="60" alignment="CENTER" layoutY="150" minWidth="600.0">
        <VBox spacing="20" alignment="CENTER">
             <padding>
                 <Insets top="15" right="15" bottom="15" left="15"/>
             </padding>
-            <Text text="Winner" fill="#F5BC64" stroke="rgba(0,0,0,0.2)" strokeWidth="1" textAlignment="CENTER">
+            <Text text="WINNER" fill="#F5BC64" stroke="rgba(0,0,0,0.2)" strokeWidth="1" textAlignment="CENTER">
                 <font>
                     <Font url="@fonts/0xProto/0xProtoNerdFont-Bold.ttf" size="30"/>
                 </font>
                 <effect>
-                    <DropShadow color="#68756D" radius="4" offsetX="2" offsetY="2" spread="0.3"/>
+                    <DropShadow color="#64F597" radius="4" offsetX="2" offsetY="2" spread="0.3"/>
                 </effect>
             </Text>
-            <ImageView fx:id="winnerImage" fitHeight="150" fitWidth="150">
+            <ImageView fx:id="winnerImage" fitHeight="140" fitWidth="140">
                 <clip>
                     <Circle centerX="70" centerY="70" radius="70"/>
                 </clip>
@@ -79,6 +79,14 @@
             <padding>
                 <Insets top="15" right="15" bottom="15" left="15"/>
             </padding>
+            <Text text="Loser" fill="#68756D" stroke="rgba(0,0,0,0.2)" strokeWidth="1" textAlignment="CENTER">
+                <font>
+                    <Font url="@fonts/0xProto/0xProtoNerdFont-Bold.ttf" size="30"/>
+                </font>
+                <effect>
+                    <DropShadow color="#68756D" radius="4" offsetX="2" offsetY="2" spread="0.3"/>
+                </effect>
+            </Text>
             <ImageView fx:id="looserImage" fitHeight="150" fitWidth="150">
                 <clip>
                     <Circle centerX="70" centerY="70" radius="70"/>
@@ -104,7 +112,7 @@
     </HBox>
 
 
-    <HBox spacing="10" layoutY="550" layoutX="350">
+    <HBox spacing="10" alignment="CENTER"  layoutY="550" minWidth="600.0">
         <Button text="Go Back" fx:id="returnButton" prefWidth="90" prefHeight="30" style="-fx-background-color: #AE64F5; -fx-text-fill: black;">
             <font>
                 <Font url="@fonts/0xProto/0xProtoNerdFont-Bold.ttf" size="14"/>

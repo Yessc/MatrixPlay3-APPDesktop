@@ -23,14 +23,12 @@ public class Main extends Application {
        Scene scene = new Scene(UtilsViews.parentContainer);
        primaryStage.setTitle("Matrix Play");
        primaryStage.setScene(scene);
-       UtilsViews.showView("Config", primaryStage);
+       //UtilsViews.showView("Config", primaryStage);
 
-       /*FinalController finalController = (FinalController) UtilsViews.getController("Final");
+       FinalController finalController = (FinalController) UtilsViews.getController("Final");
        finalController.updateFinalGame("Jugador 1", "Jugador 2", 100, 50);
-       UtilsViews.showView("Final", primaryStage);*/
-       
-
-   
+       UtilsViews.showView("Final", primaryStage);
+    
        
        
        primaryStage.show();
