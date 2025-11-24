@@ -38,7 +38,7 @@
                     <Font url="@fonts/0xProto/0xProtoNerdFont-Bold.ttf" size="30"/>
                 </font>
                 <effect>
-                    <DropShadow color="#64F597" radius="4" offsetX="2" offsetY="2" spread="0.3"/>
+                    <DropShadow color="#daf564ff" radius="4" offsetX="2" offsetY="2" spread="0.3"/>
                 </effect>
             </Text>
             <ImageView fx:id="winnerImage" fitHeight="140" fitWidth="140">
@@ -79,7 +79,7 @@
             <padding>
                 <Insets top="15" right="15" bottom="15" left="15"/>
             </padding>
-            <Text text="Loser" fill="#68756D" stroke="rgba(0,0,0,0.2)" strokeWidth="1" textAlignment="CENTER">
+            <Text text="Loser" fill="#F5BC64" stroke="rgba(0,0,0,0.2)" strokeWidth="1" textAlignment="CENTER">
                 <font>
                     <Font url="@fonts/0xProto/0xProtoNerdFont-Bold.ttf" size="30"/>
                 </font>
@@ -92,7 +92,7 @@
                     <Circle centerX="70" centerY="70" radius="70"/>
                 </clip>
             </ImageView>
-            <Label fx:id="looser" text="" textFill="#68756D">
+            <Label fx:id="looser" text="" textFill="#F5BC64">
                 <font>
                     <Font url="@fonts/0xProto/0xProtoNerdFont-Bold.ttf" size="24"/>
                 </font>
@@ -100,7 +100,7 @@
                     <DropShadow color="#68756D" radius="4" offsetX="2" offsetY="2" spread="0.3"/>
                 </effect>
             </Label>
-            <Label fx:id="looserpoints" text="" textFill="#68756D">
+            <Label fx:id="looserpoints" text="" textFill="#F5BC64">
                 <font>
                     <Font url="@fonts/0xProto/0xProtoNerdFont-Bold.ttf" size="24"/>
                 </font>
@@ -113,20 +113,20 @@
 
 
     <HBox spacing="10" alignment="CENTER"  layoutY="550" minWidth="600.0">
-        <Button text="Go Back" fx:id="returnButton" prefWidth="90" prefHeight="30" style="-fx-background-color: #AE64F5; -fx-text-fill: black;">
+        <Button text="Go Back" fx:id="returnButton" prefWidth="90" prefHeight="30" style="-fx-background-color: #AE64F5; -fx-text-fill: #4a504cff;">
             <font>
                 <Font url="@fonts/0xProto/0xProtoNerdFont-Bold.ttf" size="14"/>
             </font>
             <effect>
-                <DropShadow color="#68756D" radius="8" offsetX="5" offsetY="5" spread="0.5"/>
+                <DropShadow color="#68756D" radius="6" offsetX="2" offsetY="2" spread="0.5"/>
             </effect>
         </Button>
-        <Button text="Finish" fx:id="finishButton" prefWidth="90" prefHeight="30" style="-fx-background-color: #AE64F5; -fx-text-fill: black;">
+        <Button text="Finish" fx:id="finishButton" prefWidth="90" prefHeight="30" style="-fx-background-color: #AE64F5; -fx-text-fill: #4a504cff;">
             <font>
                 <Font url="@fonts/0xProto/0xProtoNerdFont-Bold.ttf" size="14"/>
             </font>
             <effect>
-                <DropShadow color="#68756D" radius="8" offsetX="5" offsetY="5" spread="0.5"/>
+                <DropShadow color="#68756D" radius="6" offsetX="2" offsetY="2" spread="0.5"/>
             </effect>
         </Button>
     </HBox>
