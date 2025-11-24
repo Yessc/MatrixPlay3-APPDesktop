@@ -1,7 +1,5 @@
 package com.client;
 
-import org.json.JSONObject;
-
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -11,7 +9,6 @@ import javafx.stage.Stage;
 public class Play {
 
     public static final int res = 576;
-    public static final int MAX_GOALS = 5; //max de goles
     private Stage stage;
     private ClientConnection client;
 
@@ -90,62 +87,12 @@ public class Play {
         } else {
             score[1] += 1;
         }
-        // drawGame(); //redibujar el juego despues de un gol
-        sendGoalToServer(pName);
-        checkGameEnd();
+    
     }
-    
-   
-    
-    private void endGame() {
 
-        String winnerName = "";
-        String looserName = "";
-        int winnerPoints = 0;
-        int looserPoints = 0;
-        String winnerImagePath = "";
-        String looserImagePath = "";
-
-        if (score[0] >= MAX_GOALS) {
-            winnerName = player1Name;
-            looserName = player2Name;
-            winnerPoints = score[0];
-            looserPoints = score[1];
-            winnerImagePath = "/assets/images/win.png";
-            looserImagePath = "/assets/images/losser.png";
-        } else if (score[1] >= MAX_GOALS) {
-            winnerName = player2Name;
-            looserName = player1Name;
-            winnerPoints = score[1];
-            looserPoints = score[0];
-            winnerImagePath = "/assets/images/win.png";
-            looserImagePath = "/assets/images/losser.png";
-        }
-
-        FinalController finalController = (FinalController) UtilsViews.getController("Final");
-        finalController.setWinnerData(winnerName, winnerPoints, winnerImagePath);
-        finalController.setLooserData(looserName, looserPoints, looserImagePath);
-
-        UtilsViews.showView("Final", stage);
-
-    }
-    
-    private void sendGoalToServer(String playerName) {
-        if (client != null) {
-            int currentScore = (score[0] > score[1]) ? score[0] : score[1];
-            client.sendMessage("goalScored", playerName,"Desktop", currentScore);//revisar como le envio el mensaje al servidor
-        } else {
-            System.err.println("Error: Cliente no conectado");
-        }
-    }
-    
     
 
-    public void checkGameEnd() {
-        if (score[0] >= MAX_GOALS || score[1] >= MAX_GOALS) {
-            endGame(); // Llama a endGame si el juego ha terminado
-        }
-    }
+    
 
     
 }
