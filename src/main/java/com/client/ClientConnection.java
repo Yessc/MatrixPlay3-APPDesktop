@@ -193,7 +193,7 @@ public class ClientConnection extends WebSocketClient {
                 }
 
                 if (obj.getString("type").equals("gameOver")) {
-                    String winner = obj.getString("winnerr");
+                    String winner = obj.getString("winner");
                     String loser = obj.getString("loser");
                     int scoreWinner = obj.getInt("scoreP1");
                     int scoreLoser = obj.getInt("scoreP2");
