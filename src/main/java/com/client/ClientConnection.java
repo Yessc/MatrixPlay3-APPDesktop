@@ -8,6 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import javafx.application.Platform;
+import javafx.stage.Stage;
 
 public class ClientConnection extends WebSocketClient {
 
@@ -24,6 +25,7 @@ public class ClientConnection extends WebSocketClient {
     private Listener listener;
     private String player1Name;
     private int goalScored;
+    private Stage stage;
 
     public ClientConnection(String url, String playerName, Listener listener) throws Exception {
         super(new URI(url));
@@ -199,8 +201,12 @@ public class ClientConnection extends WebSocketClient {
                     int scoreLoser = obj.getInt("scoreP2");
 
                     FinalController finalController = (FinalController) UtilsViews.getController("Final");
+                    finalController.setStage(stage);
                     finalController.updateFinalGame(winner, loser, scoreWinner, scoreLoser);
+                    UtilsViews.showView("Final", stage);
+
                     
+       
                 }
 
             } catch (Exception e) {
