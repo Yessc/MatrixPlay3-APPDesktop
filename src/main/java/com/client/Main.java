@@ -18,15 +18,20 @@ public class Main extends Application {
     
        ConfigController configController = (ConfigController) UtilsViews.getController("Config");
     //    Play playController = (Play) UtilsViews.getController("Play");
-       configController.setStage(primaryStage);
+      configController.setStage(primaryStage);
    
        Scene scene = new Scene(UtilsViews.parentContainer);
        primaryStage.setTitle("Matrix Play");
        primaryStage.setScene(scene);
+       UtilsViews.showView("Config", primaryStage);
+
+       /*FinalController finalController = (FinalController) UtilsViews.getController("Final");
+       finalController.updateFinalGame("Jugador 1", "Jugador 2", 100, 50);
+       UtilsViews.showView("Final", primaryStage);*/
        
 
    
-       UtilsViews.showView("Config", primaryStage);
+       
        
        primaryStage.show();
 

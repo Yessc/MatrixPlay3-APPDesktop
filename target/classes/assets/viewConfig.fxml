@@ -17,10 +17,10 @@
             fx:controller="com.client.ConfigController">
 
     <!-- Título principal -->
-    <Text text="Matrix Play" fill="#AE64F5" stroke="rgba(0,0,0,0.3)" strokeWidth="1.2"
+    <Text text="Matrix Play" fill="#a053e8ff" stroke="rgba(0,0,0,0.3)" strokeWidth="1.2"
           layoutX="150" layoutY="100">
         <font>
-            <Font url="@fonts/0xProto/0xProtoNerdFont-Bold.ttf" size="44"/>
+            <Font url="@fonts/0xProto/0xProtoNerdFont-Bold.ttf" size="46"/>
         </font>
         <effect>
             <DropShadow color="#68756D" radius="2" offsetX="2" offsetY="2"/>

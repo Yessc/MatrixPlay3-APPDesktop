@@ -1,13 +1,18 @@
 package com.client;
 
+import org.json.JSONObject;
+
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 public class Play {
 
     public static final int res = 576;
+    public static final int MAX_GOALS = 5; //max de goles
+    private Stage stage;
 
     @FXML
     private Canvas gameCanvas;
@@ -81,9 +86,47 @@ public class Play {
     public void updateScore(String pName) {
         if (pName.equals(player1Name)) {
             score[0] += 1;
-        }
-        else {
+        } else {
             score[1] += 1;
         }
     }
+    
+   
+    
+    private void endGame() {
+        
+        String winnerName = "";
+        String looserName = "";
+        int winnerPoints = 0;
+        int looserPoints = 0;
+        String winnerImagePath = ""; 
+        String looserImagePath = ""; 
+
+        if (score[0] >= MAX_GOALS) {
+            winnerName = player1Name;
+            looserName = player2Name;
+            winnerPoints = score[0];
+            looserPoints = score[1];
+            winnerImagePath = "/assets/images/win.png";
+            looserImagePath = "/assets/images/losser.png"; 
+        } else if (score[1] >= MAX_GOALS) {
+            winnerName = player2Name;
+            looserName = player1Name;
+            winnerPoints = score[1];
+            looserPoints = score[0];
+            winnerImagePath = "/assets/images/win.png"; 
+            looserImagePath = "/assets/images/losser.png"; 
+        }
+       
+
+
+        FinalController finalController = (FinalController) UtilsViews.getController("Final");
+        finalController.setWinnerData(winnerName, winnerPoints, winnerImagePath);
+        finalController.setLooserData(looserName, looserPoints, looserImagePath);
+
+        UtilsViews.showView("Final", stage);
+        // stage.close(); 
+    }
+
+    
 }
