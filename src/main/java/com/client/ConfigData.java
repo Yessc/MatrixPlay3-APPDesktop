@@ -50,9 +50,10 @@ public class ConfigData {
         this.scores = scores;
     }
 
-    public int getGoalScored(int goalScored) {
+    public int getGoalScored() {
         return goalScored;
     }
+
     public void setGoalScored(int goalScored) {
         this.goalScored = goalScored;
     }
@@ -62,8 +63,8 @@ public class ConfigData {
         try (FileWriter writer = new FileWriter(FILE_NAME)) {
             writer.write("{\n");
             writer.write("  \"playerName\": \"" + escape(playerName) + "\",\n");
-            writer.write("  \"clientType\": \"" + escape(clientType) + "\"\n");
-            writer.write("  \"goalsScored\": \"" + goalScored + "\"\n");
+            writer.write("  \"clientType\": \"" + escape(clientType) + "\",\n");
+            writer.write("  \"goalScored\": " + goalScored + "\n");
             writer.write("}");
         } catch (IOException e) {
             e.printStackTrace();
@@ -97,6 +98,17 @@ public class ConfigData {
                 int start = json.indexOf("\"", urlStart + urlKey.length()) + 1;
                 int end = json.indexOf("\"", start);
                 config.setClientType(unescape(json.substring(start, end)));
+            }
+
+            String goalScoredKey = "\"goalScored\":";
+            int goalScoredStart = json.indexOf(goalScoredKey);
+            if (goalScoredStart != -1) {
+                int start = goalScoredStart + goalScoredKey.length();
+                int end = json.indexOf(",", start);
+                if (end == -1)
+                    end = json.indexOf("}", start);
+                String goalScoredString = json.substring(start, end).trim();
+                config.setGoalScored(Integer.parseInt(goalScoredString));
             }
 
         } catch (IOException e) {

@@ -89,18 +89,20 @@ public class Play {
         } else {
             score[1] += 1;
         }
+        // drawGame(); //redibujar el juego despues de un gol
+        checkGameEnd();
     }
     
    
     
     private void endGame() {
-        
+
         String winnerName = "";
         String looserName = "";
         int winnerPoints = 0;
         int looserPoints = 0;
-        String winnerImagePath = ""; 
-        String looserImagePath = ""; 
+        String winnerImagePath = "";
+        String looserImagePath = "";
 
         if (score[0] >= MAX_GOALS) {
             winnerName = player1Name;
@@ -108,24 +110,31 @@ public class Play {
             winnerPoints = score[0];
             looserPoints = score[1];
             winnerImagePath = "/assets/images/win.png";
-            looserImagePath = "/assets/images/losser.png"; 
+            looserImagePath = "/assets/images/losser.png";
         } else if (score[1] >= MAX_GOALS) {
             winnerName = player2Name;
             looserName = player1Name;
             winnerPoints = score[1];
             looserPoints = score[0];
-            winnerImagePath = "/assets/images/win.png"; 
-            looserImagePath = "/assets/images/losser.png"; 
+            winnerImagePath = "/assets/images/win.png";
+            looserImagePath = "/assets/images/losser.png";
         }
-       
-
 
         FinalController finalController = (FinalController) UtilsViews.getController("Final");
         finalController.setWinnerData(winnerName, winnerPoints, winnerImagePath);
         finalController.setLooserData(looserName, looserPoints, looserImagePath);
 
         UtilsViews.showView("Final", stage);
-        // stage.close(); 
+
+    }
+    
+    
+    
+
+    public void checkGameEnd() {
+        if (score[0] >= MAX_GOALS || score[1] >= MAX_GOALS) {
+            endGame(); // Llama a endGame si el juego ha terminado
+        }
     }
 
     
