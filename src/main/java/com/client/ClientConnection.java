@@ -69,6 +69,11 @@ public class ClientConnection extends WebSocketClient {
                 System.out.println("Message received: " + message);
                 if (obj.getString("type").equals("countdown")) {
                     
+                    if (!UtilsViews.currentView.equals("Countdown")) {
+                        CountdownController countdownController = (CountdownController) UtilsViews.getController("Countdown");
+                        UtilsViews.showView("Countdown", countdownController.getStage());
+                    }
+
                     int seconds = obj.getInt("value");
                     String player1 = obj.getString("player1Name");
                     String player2 = obj.getString("player2Name");
@@ -94,6 +99,7 @@ public class ClientConnection extends WebSocketClient {
                         
                         if (i < 2) {
                             arrayNames[i] = name;
+                            configWaiting.setPlayerNames(arrayNames[0], "...");
                         }
 
                     }
@@ -203,10 +209,15 @@ public class ClientConnection extends WebSocketClient {
                     FinalController finalController = (FinalController) UtilsViews.getController("Final");
                     finalController.setStage(stage);
                     finalController.updateFinalGame(winner, loser, scoreWinner, scoreLoser);
+                    Main.clientConnection.close();
                     UtilsViews.showView("Final", stage);
+                }
 
-                    
-       
+                if (obj.getString("type").equals("rejectPlayer")) {
+                    Main.rejected = true;
+                    ConfigController configController = (ConfigController) UtilsViews.getController("Config");
+                    configController.setError("Party is full. Wait until the actual game ends");
+                    UtilsViews.showView("Config", configController.getStage());
                 }
 
             } catch (Exception e) {

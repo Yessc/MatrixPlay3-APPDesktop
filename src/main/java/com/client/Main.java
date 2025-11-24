@@ -6,7 +6,10 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+    
     public static ClientConnection clientConnection;
+    public static boolean rejected = false;
+
    @Override
    public void start(Stage primaryStage) throws Exception {
        UtilsViews.parentContainer = new StackPane();
@@ -25,9 +28,9 @@ public class Main extends Application {
        primaryStage.setScene(scene);
        //UtilsViews.showView("Config", primaryStage);
 
-       FinalController finalController = (FinalController) UtilsViews.getController("Final");
+       /*FinalController finalController = (FinalController) UtilsViews.getController("Final");
        finalController.updateFinalGame("Jugador 1", "Jugador 2", 100, 50);
-       UtilsViews.showView("Final", primaryStage);
+       UtilsViews.showView("Final", primaryStage);*/
     
        
        

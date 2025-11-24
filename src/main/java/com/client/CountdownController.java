@@ -62,13 +62,18 @@ public class CountdownController {
         countdownLabel.setText(String.valueOf(seconds));
 
         if (seconds == 0) {
+            Play playController = (Play) UtilsViews.getController("Play");
+            playController.resetScore();
             UtilsViews.showView("Play", stage);
-            //Play playController = (Play) UtilsViews.getController("Play");
         }
     }
     
     public void setStage(Stage stage) {
         this.stage = stage;
+    }
+
+    public Stage getStage() {
+        return this.stage;
     }
 
 }
