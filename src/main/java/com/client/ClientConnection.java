@@ -8,6 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import javafx.application.Platform;
+import javafx.stage.Stage;
 
 public class ClientConnection extends WebSocketClient {
 
@@ -23,11 +24,14 @@ public class ClientConnection extends WebSocketClient {
 
     private Listener listener;
     private String player1Name;
+    private int goalScored;
+    private Stage stage;
 
     public ClientConnection(String url, String playerName, Listener listener) throws Exception {
         super(new URI(url));
         this.listener = listener;
         this.player1Name = playerName;
+        this.goalScored = goalScored;
     }
 
     @Override
@@ -38,7 +42,7 @@ public class ClientConnection extends WebSocketClient {
         inner.put("type","register");
         inner.put("clientName", player1Name);
         inner.put("clientType", "Desktop");
-        //inner.put("avatar", "avatar1.png");
+
         log.put("logClient", inner);
 
         send(inner.toString());
@@ -51,6 +55,7 @@ public class ClientConnection extends WebSocketClient {
         inner.put("type", type);
         inner.put("message", message);
         inner.put("clientName", player1Name);
+        inner.put("goalScored", goalScored);
 
         send(inner.toString());
     }
@@ -64,6 +69,11 @@ public class ClientConnection extends WebSocketClient {
                 System.out.println("Message received: " + message);
                 if (obj.getString("type").equals("countdown")) {
                     
+                    if (!UtilsViews.currentView.equals("Countdown")) {
+                        CountdownController countdownController = (CountdownController) UtilsViews.getController("Countdown");
+                        UtilsViews.showView("Countdown", countdownController.getStage());
+                    }
+
                     int seconds = obj.getInt("value");
                     String player1 = obj.getString("player1Name");
                     String player2 = obj.getString("player2Name");
@@ -89,6 +99,7 @@ public class ClientConnection extends WebSocketClient {
                         
                         if (i < 2) {
                             arrayNames[i] = name;
+                            configWaiting.setPlayerNames(arrayNames[0], "...");
                         }
 
                     }
@@ -187,6 +198,26 @@ public class ClientConnection extends WebSocketClient {
                     String name = obj.getString("playerName");
                     Play playController = (Play) UtilsViews.getController("Play");
                     playController.updateScore(name);
+                }
+
+                if (obj.getString("type").equals("gameOver")) {
+                    String winner = obj.getString("winner");
+                    String loser = obj.getString("loser");
+                    int scoreWinner = obj.getInt("scoreP1");
+                    int scoreLoser = obj.getInt("scoreP2");
+
+                    FinalController finalController = (FinalController) UtilsViews.getController("Final");
+                    finalController.setStage(stage);
+                    finalController.updateFinalGame(winner, loser, scoreWinner, scoreLoser);
+                    Main.clientConnection.close();
+                    UtilsViews.showView("Final", stage);
+                }
+
+                if (obj.getString("type").equals("rejectPlayer")) {
+                    Main.rejected = true;
+                    ConfigController configController = (ConfigController) UtilsViews.getController("Config");
+                    configController.setError("Party is full. Wait until the actual game ends");
+                    UtilsViews.showView("Config", configController.getStage());
                 }
 
             } catch (Exception e) {

@@ -4,10 +4,13 @@ import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 public class Play {
 
     public static final int res = 576;
+    private Stage stage;
+    private ClientConnection client;
 
     @FXML
     private Canvas gameCanvas;
@@ -37,6 +40,11 @@ public class Play {
         this.player2Name = player2Name;
     }
 
+    public void resetScore() {
+        score[0] = 0;
+        score[1] = 0;
+    }
+
     // Este método dibuja todo en el Canvas
     public void drawGame() {
         GraphicsContext gc = gameCanvas.getGraphicsContext2D();
@@ -48,7 +56,7 @@ public class Play {
         // Barras de jugadores
         gc.setFill(Color.web("#FF5733"));
         gc.fillRect(player1X, player1Y - player_height/2, player_width, player_height);
-        gc.setFill(Color.web("#33FF57"));
+        gc.setFill(Color.web("#AE64F5"));
         gc.fillRect(player2X - player_width, player2Y - player_height/2, player_width, player_height);
 
         // Pelota
@@ -60,13 +68,13 @@ public class Play {
         gc.setFont(javafx.scene.text.Font.font(20));
         gc.fillText(player1Name, 160, 50);
 
-        gc.setFill(Color.web("#00FF00"));
+        gc.setFill(Color.web("#AE64F5"));
         gc.fillText(player2Name, res - 180, 50);
 
         // Puntuaciones
         gc.setFill(Color.web("#FF0000"));
         gc.fillText(Integer.toString(score[0]), 160, 100);
-        gc.setFill(Color.web("#00FF00"));
+        gc.setFill(Color.web("#AE64F5"));
         gc.fillText(Integer.toString(score[1]), res - 180, 100);
 
         //gc.drawLine(50,0, 50, 0);
@@ -81,9 +89,12 @@ public class Play {
     public void updateScore(String pName) {
         if (pName.equals(player1Name)) {
             score[0] += 1;
-        }
-        else {
+        } else {
             score[1] += 1;
         }
+    
     }
+
+    
+    
 }

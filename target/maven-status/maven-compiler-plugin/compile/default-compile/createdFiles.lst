@@ -1,4 +1,5 @@
 com/client/ConfigController.class
+com/client/FinalController.class
 com/client/CountdownController.class
 com/client/Main$1.class
 com/client/ClientConnection$Listener.class
