@@ -193,10 +193,10 @@ public class ClientConnection extends WebSocketClient {
                 }
 
                 if (obj.getString("type").equals("gameOver")) {
-                    String winner = obj.getString("playerWinner");
-                    String loser = obj.getString("playerLoser");
-                    int scoreWinner = obj.getInt("winnerScore");
-                    int scoreLoser = obj.getInt("loserScore");
+                    String winner = obj.getString("winnerr");
+                    String loser = obj.getString("loser");
+                    int scoreWinner = obj.getInt("scoreP1");
+                    int scoreLoser = obj.getInt("scoreP2");
 
                     FinalController finalController = (FinalController) UtilsViews.getController("Final");
                     finalController.updateFinalGame(winner, loser, scoreWinner, scoreLoser);
