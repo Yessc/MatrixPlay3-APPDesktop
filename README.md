@@ -1,4 +1,4 @@
-# 🕹️ MatrixPlay3-APPDesktop
+# MatrixPlay Desktop 
 
 *Like the classic **Pong**, but in **Java** using **JavaFX**.*
 

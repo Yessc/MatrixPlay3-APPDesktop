@@ -36,6 +36,15 @@ public class ConfigController {
     public void setStage(Stage stage) {
         this.stage = stage;
     }
+
+    public Stage getStage() {
+        return this.stage;
+    }
+
+    public void setError(String message) {
+        errorLabel.setText(message);
+        Main.rejected = false;
+    }
   
     @FXML
     private void connectToServer() {

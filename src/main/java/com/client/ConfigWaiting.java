@@ -4,13 +4,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import javafx.application.Platform;
 
 
 public class ConfigWaiting {
 
     @FXML
-    private ImageView player1Image;
+    private ImageView player1Image;//agregar imagenes
 
     @FXML
     private ImageView player2Image;
@@ -98,7 +97,7 @@ public class ConfigWaiting {
 
             System.out.println("¡Two players Ready!");
 
-            // Crear un nuevo hilo para esperar un segundo
+           /* 
             Thread waitThread = new Thread(() -> {
                 try {
                     // Simula la espera de 1 segundo (1000 milisegundos)
@@ -121,15 +120,18 @@ public class ConfigWaiting {
                     countdownController.setStage(stage);
                     UtilsViews.showView("Countdown", stage);
 
+                    Play playController = (Play) UtilsViews.getController("Play");
+                    playController.setPlayerNames(player1Name.getText(), player2Name.getText());
+
                     // Iniciar la cuenta regresiva
-                    countdownController.start(3, player1Name.getText(), player2Name.getText());
+                    // countdownController.start(3, player1Name.getText(), player2Name.getText());
                 });
             });
 
-        // Iniciar el hilo
-        waitThread.start();
+        
+        waitThread.start();*/
+        }
     }
-}
 
     
     
