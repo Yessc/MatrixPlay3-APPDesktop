@@ -59,8 +59,8 @@ public class UtilsViews {
                         stage.setHeight(600);
                     }
                     case "Play" -> {
-                        stage.setWidth(1000);
-                        stage.setHeight(600);
+                        stage.setWidth(576);
+                        stage.setHeight(576);
                     }
                 }
 
