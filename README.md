@@ -1,6 +1,5 @@
+# MatrixPlay Desktop 
 
-<<<<<<< HEAD
-=======
 *Like the classic **Pong**, but in **Java** using **JavaFX**.*
 
 ## 🎯 Main Features
@@ -57,4 +56,3 @@ mvn clean compile
 | [@Yessc](https://github.com/Yessc) | [@Alvarjur](https://github.com/Alvarjur) | [@alejandroenti](https://github.com/alejandroenti) |
 
 
->>>>>>> pro
